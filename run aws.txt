@@ -1,0 +1,1 @@
+java -Djava.library.path=D:\dynamodb\DynamoDBLocal_lib -jar d:\dynamodb\DynamoDBLocal.jar -sharedDb -dbPath D:\Workspace-test\eduflip\run

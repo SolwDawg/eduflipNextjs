@@ -75,7 +75,7 @@ const customBaseQuery = async (
 export const api = createApi({
   baseQuery: customBaseQuery,
   reducerPath: "api",
-  tagTypes: ["Courses", "Users", "UserCourseProgress", "Grades"],
+  tagTypes: ["Courses", "Users", "UserCourseProgress", "Grades", "Discussions"],
   endpoints: (build) => ({
     /* 
     ===============
@@ -269,6 +269,89 @@ export const api = createApi({
       }),
       invalidatesTags: ["Grades"],
     }),
+
+    /* 
+    ===============
+    DISCUSSIONS
+    =============== 
+    */
+    getDiscussionPosts: build.query<DiscussionPost[], string>({
+      query: (courseId) => ({
+        url: `discussions/courses/${courseId}/posts`,
+        method: "GET",
+      }),
+      providesTags: (result, error, courseId) => [
+        { type: "Discussions", id: courseId },
+      ],
+    }),
+
+    getDiscussionPost: build.query<
+      { post: DiscussionPost; replies: DiscussionReply[] },
+      string
+    >({
+      query: (postId) => ({
+        url: `discussions/posts/${postId}`,
+        method: "GET",
+      }),
+      providesTags: (result, error, postId) => [
+        { type: "Discussions", id: postId },
+      ],
+    }),
+
+    createDiscussionPost: build.mutation<
+      DiscussionPost,
+      CreateDiscussionPostRequest
+    >({
+      query: (postData) => {
+        const formData = new FormData();
+        formData.append("courseId", postData.courseId);
+        formData.append("userId", postData.userId);
+        formData.append("title", postData.title);
+        formData.append("content", postData.content);
+
+        if (postData.images && postData.images.length > 0) {
+          postData.images.forEach((image, index) => {
+            formData.append(`images`, image);
+          });
+        }
+
+        return {
+          url: `discussions/posts`,
+          method: "POST",
+          body: formData,
+        };
+      },
+      invalidatesTags: (result, error, { courseId }) => [
+        { type: "Discussions", id: courseId },
+      ],
+    }),
+
+    createDiscussionReply: build.mutation<
+      DiscussionReply,
+      CreateDiscussionReplyRequest
+    >({
+      query: (replyData) => {
+        const formData = new FormData();
+        formData.append("postId", replyData.postId);
+        formData.append("userId", replyData.userId);
+        formData.append("content", replyData.content);
+
+        if (replyData.images && replyData.images.length > 0) {
+          replyData.images.forEach((image, index) => {
+            formData.append(`images`, image);
+          });
+        }
+
+        return {
+          url: `discussions/replies`,
+          method: "POST",
+          body: formData,
+        };
+      },
+      invalidatesTags: (result, error, { postId }) => [
+        { type: "Discussions", id: postId },
+      ],
+    }),
   }),
 });
 
@@ -288,4 +371,8 @@ export const {
   useCreateGradeMutation,
   useUpdateGradeMutation,
   useDeleteGradeMutation,
+  useGetDiscussionPostsQuery,
+  useGetDiscussionPostQuery,
+  useCreateDiscussionPostMutation,
+  useCreateDiscussionReplyMutation,
 } = api;

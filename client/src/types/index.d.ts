@@ -190,5 +190,46 @@ declare global {
     order: number;
     status: "Active" | "Inactive";
   }
+
+  interface DiscussionPost {
+    postId: string;
+    courseId: string;
+    userId: string;
+    userName: string;
+    userAvatar?: string;
+    title: string;
+    content: string;
+    images?: string[];
+    createdAt: string;
+    updatedAt?: string;
+    replyCount: number;
+  }
+
+  interface DiscussionReply {
+    replyId: string;
+    postId: string;
+    userId: string;
+    userName: string;
+    userAvatar?: string;
+    content: string;
+    images?: string[];
+    createdAt: string;
+    updatedAt?: string;
+  }
+
+  interface CreateDiscussionPostRequest {
+    courseId: string;
+    userId: string;
+    title: string;
+    content: string;
+    images?: File[];
+  }
+
+  interface CreateDiscussionReplyRequest {
+    postId: string;
+    userId: string;
+    content: string;
+    images?: File[];
+  }
 }
 export {};

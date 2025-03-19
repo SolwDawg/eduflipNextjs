@@ -7,6 +7,8 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import ReactPlayer from "react-player";
 import Loading from "@/components/Loading";
 import { useCourseProgressData } from "@/hooks/useCourseProgressData";
+import { useRouter } from "next/navigation";
+import { MessageSquare } from "lucide-react";
 
 const Course = () => {
   const {
@@ -21,6 +23,7 @@ const Course = () => {
     hasMarkedComplete,
     setHasMarkedComplete,
   } = useCourseProgressData();
+  const router = useRouter();
   console.log("currentChapter.video:", currentChapter);
 
   const playerRef = useRef<ReactPlayer>(null);
@@ -99,80 +102,90 @@ const Course = () => {
           </CardContent>
         </Card>
 
-        <div className="course__content">
-          <Tabs defaultValue="Notes" className="course__tabs">
-            <TabsList className="course__tabs-list">
-              <TabsTrigger className="course__tab" value="Notes">
-                Notes
-              </TabsTrigger>
-              <TabsTrigger className="course__tab" value="Resources">
-                Resources
-              </TabsTrigger>
-              <TabsTrigger className="course__tab" value="Quiz">
-                Quiz
-              </TabsTrigger>
-            </TabsList>
+        <Tabs defaultValue="Notes" className="course__tabs">
+          <TabsList className="course__tabs-list">
+            <TabsTrigger className="course__tab" value="Notes">
+              Notes
+            </TabsTrigger>
+            <TabsTrigger className="course__tab" value="Resources">
+              Resources
+            </TabsTrigger>
+            <TabsTrigger className="course__tab" value="Quiz">
+              Quiz
+            </TabsTrigger>
+            <TabsTrigger
+              className="course__tab"
+              value="Discussions"
+              onClick={() =>
+                router.push(`/user/courses/${course.courseId}/discussions`, {
+                  scroll: false,
+                })
+              }
+            >
+              <MessageSquare className="w-4 h-4 mr-2" />
+              Discussions
+            </TabsTrigger>
+          </TabsList>
 
-            <TabsContent className="course__tab-content" value="Notes">
-              <Card className="course__tab-card">
-                <CardHeader className="course__tab-header">
-                  <CardTitle>Notes Content</CardTitle>
-                </CardHeader>
-                <CardContent className="course__tab-body">
-                  {currentChapter?.content}
-                </CardContent>
-              </Card>
-            </TabsContent>
+          <TabsContent className="course__tab-content" value="Notes">
+            <Card className="course__tab-card">
+              <CardHeader className="course__tab-header">
+                <CardTitle>Notes Content</CardTitle>
+              </CardHeader>
+              <CardContent className="course__tab-body">
+                {currentChapter?.content}
+              </CardContent>
+            </Card>
+          </TabsContent>
 
-            <TabsContent className="course__tab-content" value="Resources">
-              <Card className="course__tab-card">
-                <CardHeader className="course__tab-header">
-                  <CardTitle>Resources Content</CardTitle>
-                </CardHeader>
-                <CardContent className="course__tab-body">
-                  {/* Add resources content here */}
-                </CardContent>
-              </Card>
-            </TabsContent>
+          <TabsContent className="course__tab-content" value="Resources">
+            <Card className="course__tab-card">
+              <CardHeader className="course__tab-header">
+                <CardTitle>Resources Content</CardTitle>
+              </CardHeader>
+              <CardContent className="course__tab-body">
+                {/* Add resources content here */}
+              </CardContent>
+            </Card>
+          </TabsContent>
 
-            <TabsContent className="course__tab-content" value="Quiz">
-              <Card className="course__tab-card">
-                <CardHeader className="course__tab-header">
-                  <CardTitle>Quiz Content</CardTitle>
-                </CardHeader>
-                <CardContent className="course__tab-body">
-                  {/* Add quiz content here */}
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+          <TabsContent className="course__tab-content" value="Quiz">
+            <Card className="course__tab-card">
+              <CardHeader className="course__tab-header">
+                <CardTitle>Quiz Content</CardTitle>
+              </CardHeader>
+              <CardContent className="course__tab-body">
+                {/* Add quiz content here */}
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
 
-          <Card className="course__instructor-card">
-            <CardContent className="course__instructor-info">
-              <div className="course__instructor-header">
-                <Avatar className="course__instructor-avatar">
-                  <AvatarImage alt={course.teacherName} />
-                  <AvatarFallback className="course__instructor-avatar-fallback">
-                    {course.teacherName[0]}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="course__instructor-details">
-                  <h4 className="course__instructor-name">
-                    {course.teacherName}
-                  </h4>
-                  <p className="course__instructor-title">Senior UX Designer</p>
-                </div>
+        <Card className="course__instructor-card">
+          <CardContent className="course__instructor-info">
+            <div className="course__instructor-header">
+              <Avatar className="course__instructor-avatar">
+                <AvatarImage alt={course.teacherName} />
+                <AvatarFallback className="course__instructor-avatar-fallback">
+                  {course.teacherName[0]}
+                </AvatarFallback>
+              </Avatar>
+              <div className="course__instructor-details">
+                <h4 className="course__instructor-name">
+                  {course.teacherName}
+                </h4>
+                <p className="course__instructor-title">Senior UX Designer</p>
               </div>
-              <div className="course__instructor-bio">
-                <p>
-                  A seasoned Senior UX Designer with over 15 years of experience
-                  in creating intuitive and engaging digital experiences.
-                  Expertise in leading UX design projects.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+            <div className="course__instructor-bio">
+              <p>
+                A seasoned Senior UX Designer with over 15 years of experience
+                in creating intuitive and engaging digital experiences.
+                Expertise in leading UX design projects.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

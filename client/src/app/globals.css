@@ -1558,3 +1558,563 @@ input[type="color"] {
 .dashboard-navbar__sidebar-trigger {
   @apply text-customgreys-dirtyGrey hover:text-white-50 transition-colors;
 }
+
+/* Discussion Styles */
+.discussion {
+  @apply w-full space-y-4;
+}
+
+.discussion__header {
+  @apply flex justify-between items-center;
+}
+
+.discussion__title {
+  @apply text-xl font-semibold;
+}
+
+.discussion__create-button {
+  @apply bg-primary-700 hover:bg-primary-600 text-white-100;
+}
+
+.discussion__posts {
+  @apply space-y-4 mt-4;
+}
+
+.discussion__empty {
+  @apply flex flex-col items-center justify-center py-10 text-center;
+}
+
+.discussion__empty-icon {
+  @apply text-customgreys-dirtyGrey w-16 h-16 mb-4;
+}
+
+.discussion__empty-text {
+  @apply text-customgreys-dirtyGrey max-w-md;
+}
+
+.discussion-post {
+  @apply bg-customgreys-secondarybg border border-customgreys-secondarybg rounded-lg overflow-hidden hover:border-primary-600 transition-all cursor-pointer;
+}
+
+.discussion-post__header {
+  @apply flex justify-between items-center p-4 border-b border-customgreys-darkGrey;
+}
+
+.discussion-post__user {
+  @apply flex items-center gap-2;
+}
+
+.discussion-post__avatar {
+  @apply w-8 h-8;
+}
+
+.discussion-post__avatar-fallback {
+  @apply bg-primary-600 text-white-50;
+}
+
+.discussion-post__username {
+  @apply text-customgreys-dirtyGrey text-sm;
+}
+
+.discussion-post__date {
+  @apply text-xs text-customgreys-dirtyGrey;
+}
+
+.discussion-post__content {
+  @apply p-4;
+}
+
+.discussion-post__title {
+  @apply text-lg font-medium mb-2;
+}
+
+.discussion-post__text {
+  @apply text-sm text-customgreys-dirtyGrey line-clamp-2;
+}
+
+.discussion-post__footer {
+  @apply px-4 py-2 flex justify-between items-center bg-customgreys-darkerGrey text-xs text-customgreys-dirtyGrey;
+}
+
+.discussion-post__replies {
+  @apply flex items-center gap-1;
+}
+
+.discussion-post__replies-icon {
+  @apply w-4 h-4;
+}
+
+/* Discussion Detail Styles */
+.discussion-detail {
+  @apply w-full space-y-6;
+}
+
+.discussion-detail__header {
+  @apply flex justify-between items-center;
+}
+
+.discussion-detail__back {
+  @apply flex items-center gap-1 text-customgreys-dirtyGrey hover:text-white-50;
+}
+
+.discussion-detail__back-icon {
+  @apply w-4 h-4;
+}
+
+.discussion-detail__post {
+  @apply bg-customgreys-secondarybg rounded-lg overflow-hidden;
+}
+
+.discussion-detail__post-header {
+  @apply flex justify-between items-center p-6 border-b border-customgreys-darkGrey;
+}
+
+.discussion-detail__post-user {
+  @apply flex items-center gap-2;
+}
+
+.discussion-detail__post-avatar {
+  @apply w-10 h-10;
+}
+
+.discussion-detail__post-avatar-fallback {
+  @apply bg-primary-600 text-white-50;
+}
+
+.discussion-detail__post-username {
+  @apply text-customgreys-dirtyGrey;
+}
+
+.discussion-detail__post-date {
+  @apply text-xs text-customgreys-dirtyGrey;
+}
+
+.discussion-detail__post-content {
+  @apply p-6;
+}
+
+.discussion-detail__post-title {
+  @apply text-xl font-medium mb-4;
+}
+
+.discussion-detail__post-text {
+  @apply text-customgreys-dirtyGrey whitespace-pre-wrap;
+}
+
+.discussion-detail__post-images {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4;
+}
+
+.discussion-detail__post-image {
+  @apply rounded-lg overflow-hidden relative h-44 w-full;
+}
+
+.discussion-detail__replies {
+  @apply space-y-4;
+}
+
+.discussion-detail__replies-header {
+  @apply text-lg font-medium;
+}
+
+.discussion-detail__reply-form {
+  @apply bg-customgreys-secondarybg rounded-lg p-4 mt-8;
+}
+
+.discussion-detail__reply-input {
+  @apply w-full bg-customgreys-primarybg rounded-lg p-4 text-white-50 resize-none min-h-[100px];
+}
+
+.discussion-detail__reply-actions {
+  @apply flex justify-between items-center mt-4;
+}
+
+.discussion-detail__reply-upload {
+  @apply flex items-center gap-2 text-customgreys-dirtyGrey cursor-pointer;
+}
+
+.discussion-detail__reply-upload-icon {
+  @apply w-5 h-5;
+}
+
+.discussion-detail__reply-button {
+  @apply bg-primary-700 hover:bg-primary-600 text-white-100;
+}
+
+.discussion-detail__reply {
+  @apply bg-customgreys-secondarybg rounded-lg overflow-hidden;
+}
+
+.discussion-detail__reply-header {
+  @apply flex justify-between items-center p-4;
+}
+
+.discussion-detail__reply-user {
+  @apply flex items-center gap-2;
+}
+
+.discussion-detail__reply-avatar {
+  @apply w-8 h-8;
+}
+
+.discussion-detail__reply-avatar-fallback {
+  @apply bg-secondary-700 text-white-50;
+}
+
+.discussion-detail__reply-username {
+  @apply text-customgreys-dirtyGrey text-sm;
+}
+
+.discussion-detail__reply-date {
+  @apply text-xs text-customgreys-dirtyGrey;
+}
+
+.discussion-detail__reply-content {
+  @apply px-4 pb-4;
+}
+
+.discussion-detail__reply-text {
+  @apply text-white-50 whitespace-pre-wrap;
+}
+
+.discussion-detail__reply-images {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2;
+}
+
+.discussion-detail__reply-image {
+  @apply rounded-lg overflow-hidden relative h-32 w-full;
+}
+
+/* Discussion Create Form */
+.discussion-create {
+  @apply w-full space-y-6;
+}
+
+.discussion-create__header {
+  @apply flex justify-between items-center;
+}
+
+.discussion-create__title {
+  @apply text-xl font-semibold;
+}
+
+.discussion-create__form {
+  @apply space-y-6;
+}
+
+.discussion-create__label {
+  @apply text-white-50 font-medium;
+}
+
+.discussion-create__input {
+  @apply w-full bg-customgreys-secondarybg rounded-md text-white-50 px-3 py-2 border border-customgreys-darkGrey;
+}
+
+.discussion-create__textarea {
+  @apply w-full bg-customgreys-secondarybg rounded-md text-white-50 px-3 py-2 min-h-[200px] resize-none border border-customgreys-darkGrey;
+}
+
+.discussion-create__file-upload {
+  @apply mt-4 flex items-center;
+}
+
+.discussion-create__file-button {
+  @apply bg-customgreys-secondarybg hover:bg-customgreys-darkGrey text-white-50 px-4 py-2 rounded-md inline-flex items-center gap-2;
+}
+
+.discussion-create__file-input {
+  @apply hidden;
+}
+
+.discussion-create__file-preview {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4;
+}
+
+.discussion-create__preview-item {
+  @apply relative rounded-md overflow-hidden aspect-square;
+}
+
+.discussion-create__preview-image {
+  @apply object-cover w-full h-full;
+}
+
+.discussion-create__preview-remove {
+  @apply absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white p-1 rounded-full;
+}
+
+.discussion-create__actions {
+  @apply flex justify-end gap-4;
+}
+
+.discussion-create__cancel {
+  @apply bg-customgreys-darkGrey hover:bg-customgreys-dirtyGrey text-white-50;
+}
+
+.discussion-create__submit {
+  @apply bg-primary-700 hover:bg-primary-600 text-white-100;
+}
+
+/* Discussion Components */
+.discussion {
+  @apply w-full;
+}
+
+.discussion__header {
+  @apply flex justify-between items-center mb-6;
+}
+
+.discussion__title {
+  @apply text-2xl font-semibold;
+}
+
+.discussion__create-button {
+  @apply flex items-center gap-2 bg-primary-700 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors;
+}
+
+.discussion__empty {
+  @apply flex flex-col items-center justify-center py-12 text-center;
+}
+
+.discussion__empty-icon {
+  @apply w-12 h-12 text-gray-400 mb-4;
+}
+
+.discussion__empty-text {
+  @apply text-gray-400;
+}
+
+.discussion-post {
+  @apply bg-customgreys-secondarybg rounded-lg p-6 mb-4;
+}
+
+.discussion-post__header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.discussion-post__user {
+  @apply flex items-center gap-3;
+}
+
+.discussion-post__avatar {
+  @apply w-10 h-10 rounded-full;
+}
+
+.discussion-post__user-info {
+  @apply flex flex-col;
+}
+
+.discussion-post__user-name {
+  @apply font-medium;
+}
+
+.discussion-post__timestamp {
+  @apply text-sm text-gray-400;
+}
+
+.discussion-post__title {
+  @apply text-xl font-semibold mb-2;
+}
+
+.discussion-post__content {
+  @apply text-gray-300 mb-4;
+}
+
+.discussion-post__images {
+  @apply grid grid-cols-2 gap-4 mb-4;
+}
+
+.discussion-post__image {
+  @apply w-full h-48 object-cover rounded-lg;
+}
+
+.discussion-post__footer {
+  @apply flex items-center gap-2 text-gray-400;
+}
+
+.discussion-create {
+  @apply max-w-3xl mx-auto;
+}
+
+.discussion-create__header {
+  @apply flex items-center gap-4 mb-6;
+}
+
+.discussion-create__title {
+  @apply text-2xl font-semibold;
+}
+
+.discussion-create__form {
+  @apply space-y-6;
+}
+
+.discussion-create__label {
+  @apply block text-sm font-medium mb-2;
+}
+
+.discussion-create__input {
+  @apply w-full bg-customgreys-secondarybg border border-gray-700 rounded-lg px-4 py-2;
+}
+
+.discussion-create__textarea {
+  @apply w-full bg-customgreys-secondarybg border border-gray-700 rounded-lg px-4 py-2 min-h-[200px];
+}
+
+.discussion-create__file-upload {
+  @apply flex items-center gap-4;
+}
+
+.discussion-create__file-button {
+  @apply flex items-center gap-2 bg-customgreys-secondarybg border border-gray-700 rounded-lg px-4 py-2 hover:bg-gray-700/50 transition-colors;
+}
+
+.discussion-create__file-input {
+  @apply hidden;
+}
+
+.discussion-create__file-preview {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.discussion-create__preview-item {
+  @apply relative;
+}
+
+.discussion-create__preview-image {
+  @apply w-full h-48 object-cover rounded-lg;
+}
+
+.discussion-create__preview-remove {
+  @apply absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors;
+}
+
+.discussion-create__actions {
+  @apply flex justify-end gap-4;
+}
+
+.discussion-create__cancel {
+  @apply bg-customgreys-secondarybg border border-gray-700 hover:bg-gray-700/50;
+}
+
+.discussion-create__submit {
+  @apply bg-primary-700 hover:bg-primary-600;
+}
+
+.discussion-detail {
+  @apply max-w-4xl mx-auto;
+}
+
+.discussion-detail__header {
+  @apply flex items-center gap-4 mb-6;
+}
+
+.discussion-detail__back {
+  @apply flex items-center gap-2 text-gray-400 hover:text-white transition-colors;
+}
+
+.discussion-detail__back-icon {
+  @apply w-4 h-4;
+}
+
+.discussion-detail__title {
+  @apply text-2xl font-semibold;
+}
+
+.discussion-detail__post {
+  @apply bg-customgreys-secondarybg rounded-lg p-6 mb-8;
+}
+
+.discussion-detail__post-header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.discussion-detail__user {
+  @apply flex items-center gap-3;
+}
+
+.discussion-detail__avatar {
+  @apply w-10 h-10 rounded-full;
+}
+
+.discussion-detail__user-name {
+  @apply font-medium;
+}
+
+.discussion-detail__timestamp {
+  @apply text-sm text-gray-400;
+}
+
+.discussion-detail__content {
+  @apply text-gray-300 mb-4;
+}
+
+.discussion-detail__images {
+  @apply grid grid-cols-2 gap-4 mb-4;
+}
+
+.discussion-detail__image-container {
+  @apply relative;
+}
+
+.discussion-detail__image {
+  @apply w-full h-48 object-cover rounded-lg;
+}
+
+.discussion-detail__replies {
+  @apply space-y-6;
+}
+
+.discussion-detail__replies-title {
+  @apply text-xl font-semibold mb-4;
+}
+
+.discussion-detail__reply {
+  @apply bg-customgreys-secondarybg rounded-lg p-4;
+}
+
+.discussion-detail__reply-header {
+  @apply flex items-center justify-between mb-2;
+}
+
+.discussion-detail__reply-form {
+  @apply mt-8 space-y-4;
+}
+
+.discussion-detail__label {
+  @apply block text-sm font-medium mb-2;
+}
+
+.discussion-detail__textarea {
+  @apply w-full bg-customgreys-secondarybg border border-gray-700 rounded-lg px-4 py-2 min-h-[100px];
+}
+
+.discussion-detail__file-upload {
+  @apply flex items-center gap-4;
+}
+
+.discussion-detail__file-button {
+  @apply flex items-center gap-2 bg-customgreys-secondarybg border border-gray-700 rounded-lg px-4 py-2 hover:bg-gray-700/50 transition-colors;
+}
+
+.discussion-detail__file-input {
+  @apply hidden;
+}
+
+.discussion-detail__file-preview {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.discussion-detail__preview-item {
+  @apply relative;
+}
+
+.discussion-detail__preview-image {
+  @apply w-full h-48 object-cover rounded-lg;
+}
+
+.discussion-detail__preview-remove {
+  @apply absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors;
+}
+
+.discussion-detail__submit {
+  @apply bg-primary-700 hover:bg-primary-600;
+}

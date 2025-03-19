@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BaseQueryApi, FetchArgs } from "@reduxjs/toolkit/query";
+import {
+  BaseQueryApi,
+  FetchArgs,
+  FetchBaseQueryError,
+  FetchBaseQueryResult,
+} from "@reduxjs/toolkit/query";
 import { User } from "@clerk/nextjs/server";
 import { Clerk } from "@clerk/clerk-js";
 import { toast } from "sonner";
@@ -7,10 +12,10 @@ import { toast } from "sonner";
 const customBaseQuery = async (
   args: string | FetchArgs,
   api: BaseQueryApi,
-  extraOptions: any
+  extraOptions: Record<string, unknown>
 ) => {
   const baseQuery = fetchBaseQuery({
-    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+    baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8001",
     prepareHeaders: async (headers) => {
       const token = await window.Clerk?.session?.getToken();
       if (token) {
@@ -21,7 +26,11 @@ const customBaseQuery = async (
   });
 
   try {
-    const result: any = await baseQuery(args, api, extraOptions);
+    const result: FetchBaseQueryResult = await baseQuery(
+      args,
+      api,
+      extraOptions
+    );
 
     if (result.error) {
       const errorData = result.error.data;
@@ -54,7 +63,12 @@ const customBaseQuery = async (
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
 
-    return { error: { status: "FETCH_ERROR", error: errorMessage } };
+    return {
+      error: {
+        status: "FETCH_ERROR",
+        error: errorMessage,
+      } as FetchBaseQueryError,
+    };
   }
 };
 
@@ -148,35 +162,18 @@ export const api = createApi({
 
     /* 
     ===============
-    TRANSACTIONS
-    =============== 
-    */
-    getTransactions: build.query<Transaction[], string>({
-      query: (userId) => `transactions?userId=${userId}`,
-    }),
-    createStripePaymentIntent: build.mutation<
-      { clientSecret: string },
-      { amount: number }
-    >({
-      query: ({ amount }) => ({
-        url: `/transactions/stripe/payment-intent`,
-        method: "POST",
-        body: { amount },
-      }),
-    }),
-    createTransaction: build.mutation<Transaction, Partial<Transaction>>({
-      query: (transaction) => ({
-        url: "transactions",
-        method: "POST",
-        body: transaction,
-      }),
-    }),
-
-    /* 
-    ===============
     USER COURSE PROGRESS
     =============== 
     */
+    enrollCourse: build.mutation<void, { userId: string; courseId: string }>({
+      query: (enrollment) => ({
+        url: `users/course-progress/enroll`,
+        method: "POST",
+        body: enrollment,
+      }),
+      invalidatesTags: ["Courses", "UserCourseProgress"],
+    }),
+
     getUserEnrolledCourses: build.query<Course[], string>({
       query: (userId) => `users/course-progress/${userId}/enrolled-courses`,
       providesTags: ["Courses", "UserCourseProgress"],
@@ -241,9 +238,7 @@ export const {
   useGetCoursesQuery,
   useGetCourseQuery,
   useGetUploadVideoUrlMutation,
-  useGetTransactionsQuery,
-  useCreateTransactionMutation,
-  useCreateStripePaymentIntentMutation,
+  useEnrollCourseMutation,
   useGetUserEnrolledCoursesQuery,
   useGetUserCourseProgressQuery,
   useUpdateUserCourseProgressMutation,

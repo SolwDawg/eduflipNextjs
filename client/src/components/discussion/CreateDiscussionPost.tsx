@@ -6,7 +6,7 @@ import { useCreateDiscussionPostMutation } from "@/state/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Image, X, ArrowLeft } from "lucide-react";
+import { X, ArrowLeft } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { toast } from "sonner";
@@ -155,7 +155,12 @@ const CreateDiscussionPost: React.FC<CreateDiscussionPostProps> = ({
             className="discussion-create__file-button"
             disabled={isSubmitting}
           >
-            <Image className="h-5 w-5" />
+            <Image
+              src="/images/upload.svg"
+              alt="Upload"
+              width={20}
+              height={20}
+            />
             {selectedImages.length === 0 ? "Add Images" : "Add More Images"}
           </button>
           <input

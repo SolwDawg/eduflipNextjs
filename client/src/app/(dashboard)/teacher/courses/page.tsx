@@ -5,14 +5,11 @@ import Loading from "@/components/Loading";
 import TeacherCourseCard from "@/components/TeacherCourseCard";
 import Toolbar from "@/components/Toolbar";
 import { Button } from "@/components/ui/button";
-import {
-  useCreateCourseMutation,
-  useDeleteCourseMutation,
-  useGetCoursesQuery,
-} from "@/state/api";
+import { useDeleteCourseMutation, useGetCoursesQuery } from "@/state/api";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import React, { useMemo, useState } from "react";
+import AddCourseModal from "@/components/AddCourseModal";
 
 const Courses = () => {
   const router = useRouter();
@@ -23,9 +20,8 @@ const Courses = () => {
     isError,
   } = useGetCoursesQuery({ category: "all" });
 
-  const [createCourse] = useCreateCourseMutation();
   const [deleteCourse] = useDeleteCourseMutation();
-
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -54,14 +50,8 @@ const Courses = () => {
     }
   };
 
-  const handleCreateCourse = async () => {
-    if (!user) return;
-
-    const result = await createCourse({
-      teacherId: user.id,
-      teacherName: user.fullName || "Unknown Teacher",
-    }).unwrap();
-    router.push(`/teacher/courses/${result.courseId}`, {
+  const handleCourseAdded = (course: Course) => {
+    router.push(`/teacher/courses/${course.courseId}`, {
       scroll: false,
     });
   };
@@ -76,7 +66,7 @@ const Courses = () => {
         subtitle="Browse your courses"
         rightElement={
           <Button
-            onClick={handleCreateCourse}
+            onClick={() => setIsAddModalOpen(true)}
             className="teacher-courses__header"
           >
             Create Course
@@ -98,6 +88,12 @@ const Courses = () => {
           />
         ))}
       </div>
+
+      <AddCourseModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onSuccess={handleCourseAdded}
+      />
     </div>
   );
 };

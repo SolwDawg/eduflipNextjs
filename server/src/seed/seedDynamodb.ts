@@ -10,6 +10,7 @@ import pluralize from "pluralize";
 import Course from "../models/courseModel";
 import UserCourseProgress from "../models/userCourseProgressModel";
 import dotenv from "dotenv";
+import Grade from "../models/gradeModel";
 
 dotenv.config();
 let client: DynamoDBClient;
@@ -44,7 +45,7 @@ console.warn = (message, ...args) => {
 };
 
 async function createTables() {
-  const models = [UserCourseProgress, Course];
+  const models = [Grade, UserCourseProgress, Course];
 
   for (const model of models) {
     const tableName = model.name;

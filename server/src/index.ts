@@ -12,10 +12,12 @@ import {
   createClerkClient,
   requireAuth,
 } from "@clerk/express";
+import { specs, swaggerUi } from "./utils/swagger";
 /* ROUTE IMPORTS */
 import courseRoutes from "./routes/courseRoutes";
 import userClerkRoutes from "./routes/userClerkRoutes";
 import userCourseProgressRoutes from "./routes/userCourseProgressRoutes";
+import gradeRoutes from "./routes/gradeRoutes";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -43,9 +45,17 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+// Swagger Documentation
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs, { explorer: true })
+);
+
 app.use("/courses", courseRoutes);
 app.use("/users/clerk", requireAuth(), userClerkRoutes);
 app.use("/users/course-progress", requireAuth(), userCourseProgressRoutes);
+app.use("/grades", gradeRoutes);
 
 /* SERVER */
 const port = process.env.PORT || 3000;

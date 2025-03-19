@@ -1,8 +1,6 @@
 [
   {
     "courseId": "3a9f3d6c-c391-4b1c-9c3d-6c3f3d6c3f3d",
-    "teacherId": "user_7kFh92JkCpQw3N8M5L4xRzVtYs",
-    "teacherName": "John Doe",
     "title": "Introduction to Programming",
     "description": "Learn the basics of programming with this comprehensive course.",
     "category": "Computer Science",
@@ -112,8 +110,6 @@
   },
   {
     "courseId": "8b4f7d9c-4b1c-4b1c-8b4f-7d9c8b4f7d9c",
-    "teacherId": "user_4mNj68RtPvXw2Ky9Qc7HbSdAf",
-    "teacherName": "Alice Johnson",
     "title": "Advanced Machine Learning",
     "description": "Dive deep into machine learning algorithms and techniques.",
     "category": "Artificial Intelligence",
@@ -225,8 +221,6 @@
   },
   {
     "courseId": "c5d6e7f8-g9h0-i1j2-k3l4-m5n6o7p8q9r0",
-    "teacherId": "user_7kFh92JkCpQw3N8M5L4xRzVtYs",
-    "teacherName": "John Doe",
     "title": "Web Development Fundamentals",
     "description": "Learn the basics of HTML, CSS, and JavaScript to build modern websites.",
     "category": "Web Development",

@@ -75,7 +75,7 @@ const customBaseQuery = async (
 export const api = createApi({
   baseQuery: customBaseQuery,
   reducerPath: "api",
-  tagTypes: ["Courses", "Users", "UserCourseProgress"],
+  tagTypes: ["Courses", "Users", "UserCourseProgress", "Grades"],
   endpoints: (build) => ({
     /* 
     ===============
@@ -227,6 +227,48 @@ export const api = createApi({
         }
       },
     }),
+
+    /* 
+    ===============
+    GRADES
+    =============== 
+    */
+    getGrades: build.query<Grade[], void>({
+      query: () => ({
+        url: "grades",
+        method: "GET",
+      }),
+      providesTags: ["Grades"],
+    }),
+
+    createGrade: build.mutation<Grade, Omit<Grade, "gradeId">>({
+      query: (gradeData) => ({
+        url: "grades",
+        method: "POST",
+        body: gradeData,
+      }),
+      invalidatesTags: ["Grades"],
+    }),
+
+    updateGrade: build.mutation<
+      Grade,
+      { gradeId: string; gradeData: Partial<Omit<Grade, "gradeId">> }
+    >({
+      query: ({ gradeId, gradeData }) => ({
+        url: `grades/${gradeId}`,
+        method: "PUT",
+        body: gradeData,
+      }),
+      invalidatesTags: ["Grades"],
+    }),
+
+    deleteGrade: build.mutation<{ message: string }, string>({
+      query: (gradeId) => ({
+        url: `grades/${gradeId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Grades"],
+    }),
   }),
 });
 
@@ -242,4 +284,8 @@ export const {
   useGetUserEnrolledCoursesQuery,
   useGetUserCourseProgressQuery,
   useUpdateUserCourseProgressMutation,
+  useGetGradesQuery,
+  useCreateGradeMutation,
+  useUpdateGradeMutation,
+  useDeleteGradeMutation,
 } = api;

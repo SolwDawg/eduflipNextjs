@@ -1,0 +1,23 @@
+[
+  {
+    "gradeId": "grade-10",
+    "name": "Grade 10",
+    "description": "Secondary school grade for students typically aged 15-16 years",
+    "order": 10,
+    "status": "Active"
+  },
+  {
+    "gradeId": "grade-11",
+    "name": "Grade 11",
+    "description": "Secondary school grade for students typically aged 16-17 years",
+    "order": 11,
+    "status": "Active"
+  },
+  {
+    "gradeId": "grade-12",
+    "name": "Grade 12",
+    "description": "Final secondary school grade for students typically aged 17-18 years",
+    "order": 12,
+    "status": "Active"
+  }
+]

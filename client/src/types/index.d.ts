@@ -182,5 +182,13 @@ declare global {
     courseCategory: string;
     courseStatus: boolean;
   }
+
+  interface Grade {
+    gradeId: string;
+    name: string;
+    description: string;
+    order: number;
+    status: "Active" | "Inactive";
+  }
 }
 export {};

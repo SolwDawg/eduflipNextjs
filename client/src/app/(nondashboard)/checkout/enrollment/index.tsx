@@ -56,9 +56,9 @@ const EnrollmentPage = () => {
         {/* Enrollment Content */}
         <div className="enrollment__content-container">
           <div className="enrollment__content">
-            <h1 className="enrollment__title">Enrolling in Course</h1>
+            <h1 className="enrollment__title">Enrolling in Free Course</h1>
             <p className="enrollment__subtitle">
-              Please wait while we enroll you in this course.
+              Please wait while we enroll you in this free course.
             </p>
 
             <div className="enrollment__status">
@@ -71,7 +71,7 @@ const EnrollmentPage = () => {
                     className="enrollment__submit"
                     disabled={isEnrolling}
                   >
-                    {isEnrolling ? "Enrolling..." : "Enroll Now"}
+                    {isEnrolling ? "Enrolling..." : "Enroll Now for Free"}
                   </Button>
                 </div>
               )}

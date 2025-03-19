@@ -183,10 +183,6 @@ input[type="color"] {
   @apply flex justify-between items-center mt-5;
 }
 
-.selected-course__price {
-  @apply text-primary-500 font-semibold text-2xl;
-}
-
 /* Checkout Pages */
 .checkout {
   @apply w-full px-4 h-full flex flex-col items-center py-12;
@@ -1038,10 +1034,6 @@ input[type="color"] {
   @apply text-sm bg-customgreys-secondarybg rounded-full px-3 py-2 text-gray-400;
 }
 
-.course-card__price {
-  @apply text-primary-500 font-bold text-md;
-}
-
 /* Course Card Search */
 .course-card-search {
   @apply bg-customgreys-secondarybg overflow-hidden rounded-lg hover:bg-white-100/10 transition duration-200 flex flex-col cursor-pointer border-2 h-full;
@@ -1395,10 +1387,6 @@ input[type="color"] {
 
 .course-card-search__footer {
   @apply flex justify-between items-center mt-1;
-}
-
-.course-card-search__price {
-  @apply text-primary-500 font-semibold;
 }
 
 .course-card-search__enrollment {

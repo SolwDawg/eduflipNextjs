@@ -14,7 +14,7 @@ const CompletionPage = () => {
         </div>
         <h1 className="completion__title">COMPLETED</h1>
         <p className="completion__message">
-          🎉 You have successfully enrolled in this course! 🎉
+          🎉 You have successfully enrolled in this free course! 🎉
         </p>
       </div>
       <div className="completion__support">

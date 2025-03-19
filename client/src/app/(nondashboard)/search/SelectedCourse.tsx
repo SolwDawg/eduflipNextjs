@@ -1,6 +1,5 @@
 import AccordionSections from "@/components/AccordionSections";
 import { Button } from "@/components/ui/button";
-import { formatPrice } from "@/lib/utils";
 import React from "react";
 
 const SelectedCourse = ({ course, handleEnrollNow }: SelectedCourseProps) => {
@@ -25,12 +24,9 @@ const SelectedCourse = ({ course, handleEnrollNow }: SelectedCourseProps) => {
         </div>
 
         <div className="selected-course__footer">
-          <span className="selected-course__price">
-            {formatPrice(course.price)}
-          </span>
           <Button
             onClick={() => handleEnrollNow(course.courseId)}
-            className="bg-primary-700 hover:bg-primary-600"
+            className="bg-primary-700 hover:bg-primary-600 w-full"
           >
             Enroll Now
           </Button>

@@ -14,7 +14,7 @@ const CompletionPage = () => {
         </div>
         <h1 className="completion__title">COMPLETED</h1>
         <p className="completion__message">
-          🎉 You have made a course purchase successfully! 🎉
+          🎉 You have successfully enrolled in this course! 🎉
         </p>
       </div>
       <div className="completion__support">
@@ -27,8 +27,8 @@ const CompletionPage = () => {
         </p>
       </div>
       <div className="completion__action">
-        <Link href="user/courses" scroll={false}>
-          Go to Courses
+        <Link href="/user/courses" scroll={false}>
+          Go to My Courses
         </Link>
       </div>
     </div>

@@ -31,7 +31,7 @@ const WizardStepper = ({ currentStep }: WizardStepperProps) => {
                 })}
               >
                 {step === 1 && "Details"}
-                {step === 2 && "Payment"}
+                {step === 2 && "Enrollment"}
                 {step === 3 && "Completion"}
               </p>
             </div>

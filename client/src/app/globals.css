@@ -461,6 +461,47 @@ input[type="color"] {
   @apply hover:bg-primary-600 bg-primary-700;
 }
 
+/* Enrollment Page */
+.enrollment {
+  @apply w-full;
+}
+
+.enrollment__container {
+  @apply flex flex-col md:flex-row gap-8 w-full max-w-screen-lg;
+}
+
+.enrollment__preview {
+  @apply basis-1/3;
+}
+
+.enrollment__content-container {
+  @apply basis-2/3 flex flex-col border-[2px] border-white-100/5 rounded-lg;
+}
+
+.enrollment__content {
+  @apply px-8 py-6;
+}
+
+.enrollment__title {
+  @apply text-2xl font-semibold text-white-50;
+}
+
+.enrollment__subtitle {
+  @apply text-customgreys-dirtyGrey mt-2;
+}
+
+.enrollment__status {
+  @apply mt-6 flex items-center justify-center min-h-[120px];
+}
+
+.enrollment__actions {
+  @apply flex flex-col items-center;
+}
+
+.enrollment__submit {
+  @apply hover:bg-primary-600 bg-primary-700 px-6;
+}
+
 /* Billing Page */
 .billing {
   @apply space-y-8;
